@@ -5,6 +5,8 @@ import NotFound from './pages/NotFound'
 import './assets/scss/App.scss'
 import './App.css'
 import LatestMovies from './pages/LatestMovies'
+import MostPopularMovies from './pages/MostPopularMovies'
+import TopMovies from './pages/TopMovies'
 
 function App() {
 	return (
@@ -14,10 +16,10 @@ function App() {
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 				<Route path="*" element={<NotFound />} />
-				<Route path="/latestmovies/" element={<LatestMovies/>} />
-				<Route path="*" element={<NotFound />} />
-				<Route path="*" element={<NotFound />} />
-				<Route path="*" element={<NotFound />} />
+				<Route path="/latestMovies/" element={<LatestMovies/>} />
+				<Route path="/mostPopularMovies" element={<MostPopularMovies />} />
+				<Route path="/topMovies" element={<TopMovies/>} />
+				
 			</Routes>
 		</div>
 	)

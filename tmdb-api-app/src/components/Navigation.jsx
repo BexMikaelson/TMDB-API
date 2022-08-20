@@ -13,10 +13,10 @@ const Navigation = () => {
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ms-auto">
 						<Nav.Link as={NavLink} end to="/">Home</Nav.Link>
-						<Nav.Link as={NavLink} end to="/latestmovies">Latest Movies</Nav.Link>
-						<Nav.Link as={NavLink} end to="/">Home</Nav.Link>
-						<Nav.Link as={NavLink} end to="/">Home</Nav.Link>
-						<Nav.Link as={NavLink} end to="/">Home</Nav.Link>
+						<Nav.Link as={NavLink} end to="/latestMovies">Latest Movies</Nav.Link>
+						<Nav.Link as={NavLink} end to="/topMovies">Top Movies</Nav.Link>
+						<Nav.Link as={NavLink} end to="/mostPopularMovies">Popular Movies</Nav.Link>
+						
 					</Nav>
 				</Navbar.Collapse>
 			</Container>

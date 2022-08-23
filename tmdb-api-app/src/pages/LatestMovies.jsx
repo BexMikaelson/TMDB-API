@@ -1,12 +1,12 @@
 
 import {useQuery} from 'react-query';
 
-import NewMovies from "./NewMovies"
+import NewMovies from './NewMovies'
 
-function Component() {
+function Components() {
 	// Fetcher function
 	const getLatestMovies = async () => {
-		const res = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=05f52796b7985ed1e09a4067b247940c&language=en-US&page=1");
+		const res = await fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=05f52796b7985ed1e09a4067b247940c&language=en-US&page=1");
 		return res.json();
 	};
 	// Using the hook
@@ -34,4 +34,4 @@ function Component() {
 }
    
   
-  export default Component;
+  export default Components;

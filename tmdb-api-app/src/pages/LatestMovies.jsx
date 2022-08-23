@@ -1,24 +1,37 @@
 
-import useFetch from "../components/UseFetch";
+import {useQuery} from 'react-query';
 
-function App() {
-  const { data: joke, loading, error, refetch } = useFetch(
-    "https://v2.jokeapi.dev/joke/Any"
-  );
+import NewMovies from "./NewMovies"
 
-  if (loading) return <h1> LOADING...</h1>;
+function Component() {
+	// Fetcher function
+	const getLatestMovies = async () => {
+		const res = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=05f52796b7985ed1e09a4067b247940c&language=en-US&page=1");
+		return res.json();
+	};
+	// Using the hook
+	const {data, error, isLoading} = useQuery('LatestMovies', getLatestMovies);
+	// Error and Loading states
+	if (error) return <div>Request Failed</div>;
+	if (isLoading) return <div>Loading...</div>;
+	// Show the response if everything is fine
+    console.log(data.results)
+	return (
+		<div>
+			<h1>Latest Movies</h1>
+			<div>
+                {data.results.map(movie => <NewMovies key={movie.title} movie={movie}/> )}
+            </div>
 
-  if (error) console.log(error);
+			
 
-  return (
-    <div className="App">
-      <h1>
-        {joke?.setup} : {joke?.delivery}
-      </h1>
+			
+            
+		</div>
 
-      <button onClick={refetch}> Refetch</button>
-    </div>
-  );
+		
+	);
 }
-
-export default App;
+   
+  
+  export default Component;

@@ -10,13 +10,11 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom'
 
 
-const Movie = ({movie}) => {
-
+const topMovie = ({movie}) => {
   const [show, setShow]=useState(false);
 
     const handleShow=()=>setShow(true);
     const handleClose=()=>setShow(false);
-    
     return ( 
     <Container className='d-flex'>
       <div className=' '>
@@ -28,7 +26,7 @@ const Movie = ({movie}) => {
              
              <Link to= {'/MovieInfo'} >
              <Button>Movie info</Button>
-             </Link>
+             </Link> 
 
              <button type="button" className="btn btn-dark" onClick={handleShow} >Movie info</button>
                   <Modal show={show} onHide={handleClose}>
@@ -60,6 +58,6 @@ const Movie = ({movie}) => {
      );
 }
  
-export default Movie;
+export default topMovie;
 
 

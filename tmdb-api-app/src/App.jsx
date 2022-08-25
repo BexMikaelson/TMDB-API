@@ -10,6 +10,8 @@ import TopMovies from './pages/TopMovies'
 import {QueryClient, QueryClientProvider} from 'react-query';
 import MovieInfo from './pages/MovieInfo'
 
+
+
 // Initialze the client
 const queryClient = new QueryClient();
 
@@ -18,7 +20,7 @@ const queryClient = new QueryClient();
 function App() {
 	return (
 		
-		
+		<>
 		<QueryClientProvider client={queryClient}>
 			<Navigation />
 			<Routes>
@@ -33,6 +35,7 @@ function App() {
 				
 			</Routes>
 		</QueryClientProvider>
+		</>
 	);
 }
 

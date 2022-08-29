@@ -1,37 +1,55 @@
-{/*"https://api.themoviedb.org/3/movie/popular?api_key=05f52796b7985ed1e09a4067b247940c&language=en-US&page=1"*/}
-import {useQuery} from 'react-query';
+import { useQuery } from 'react-query'
+import { getMostPopularMoviesPage } from '../api/axios'
+import { useState } from 'react'
+import PopularMovie from './PopularMovie'
+import PageButton from '../components/PageButton'
 
-import PopularMovie from "./PopularMovie"
+const mostPopularMovies = () => {
+    const [page, setPage] = useState(1)
 
-function Component() {
-	// Fetcher function
-	const getPopularMovies = async () => {
-		const res = await fetch("https://api.themoviedb.org/3/movie/popular?api_key=05f52796b7985ed1e09a4067b247940c&language=en-US&page=1");
-		return res.json();
-	};
-	// Using the hook
-	const {data, error, isLoading} = useQuery('popularMovies', getPopularMovies);
-	// Error and Loading states
-	if (error) return <div>Request Failed</div>;
-	if (isLoading) return <div>Loading...</div>;
-	// Show the response if everything is fine
-    console.log(data.results)
-	return (
-		<div>
-			<h1>Popular Movies</h1>
-			<div>
-                {data.results.map(movie => <PopularMovie key={movie.title} movie={movie}/> )}
+    const {
+        isLoading,
+        isError,
+        error,
+        data,
+        isFetching,
+        isPreviousData,
+    } = useQuery(['/movie', page], () => getMostPopularMoviesPage(page), {
+        keepPreviousData: true
+    })
+
+    if (isLoading) return <p>Loading Users...</p>
+
+    if (isError) return <p>Error: {error.message}</p>
+
+    const content = data.data?.map(movie => <PopularMovie key={movie.id} movie={movie} />)
+
+    const lastPage = () => setPage(10)
+
+    const firstPage = () => setPage(1)
+
+    const pagesArray = Array(10).fill().map((_, index) => index + 1)
+
+    const nav = (
+        <nav className="nav-ex2">
+            <button onClick={firstPage} disabled={isPreviousData || page === 1}>&lt;&lt;</button>
+            { isPreviousData}
+            {pagesArray.map(pg => <PageButton key={pg} pg={pg} setPage={setPage} />)}
+            <button onClick={lastPage} disabled={isPreviousData || page === 10}>&gt;&gt;</button>
+        </nav>
+    )
+
+    return (
+        <>
+		<h1>Popular Movies</h1>
+            <div>
+                {data.results?.map(movie => <PopularMovie key={movie.title} movie={movie}/> )}
             </div>
-
-			
-
-			
-            
-		</div>
-
-		
-	);
+        
+            {nav}
+            {isFetching && <span className="loading">Loading...</span>}
+            {content}
+        </>
+    )
 }
-   
-  
-  export default Component;
+export default mostPopularMovies

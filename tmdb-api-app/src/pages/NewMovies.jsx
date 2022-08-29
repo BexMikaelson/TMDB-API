@@ -1,4 +1,4 @@
-import {useQuery} from 'react-query';
+
 const API_IMG = 'https://image.tmdb.org/t/p/w500/'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Card from 'react-bootstrap/Card'

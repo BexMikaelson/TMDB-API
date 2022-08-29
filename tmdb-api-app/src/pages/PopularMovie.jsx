@@ -10,7 +10,7 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom'
 
 
-const Movie = ({movie}) => {
+const popularMovie = ({movie}) => {
 
   const [show, setShow]=useState(false);
 
@@ -60,6 +60,6 @@ const Movie = ({movie}) => {
      );
 }
  
-export default Movie;
+export default popularMovie;
 
 

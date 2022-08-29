@@ -1,36 +1,55 @@
-import {useQuery} from 'react-query';
-
+import { useQuery } from 'react-query'
+import { getTopMoviePage } from '../api/axios'
+import { useState } from 'react'
 import TopMovie from './TopMovie'
+import PageButton from '../components/PageButton'
 
-function Components() {
-	// Fetcher function
-	const getTopMovies = async () => {
-		const res = await fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=05f52796b7985ed1e09a4067b247940c&language=en-US&page=1");
-		return res.json();
-	};
-	// Using the hook
-	const {data, error, isLoading} = useQuery('LatestMovies', getTopMovies);
-	// Error and Loading states
-	if (error) return <div>Request Failed</div>;
-	if (isLoading) return <div>Loading...</div>;
-	// Show the response if everything is fine
-    console.log(data.results)
-	return (
-		<div>
-			<h1>Top Movies</h1>
-			<div>
-                {data.results.map(movie => <TopMovie key={movie.title} movie={movie}/> )}
+const topMovies = () => {
+    const [page, setPage] = useState(1)
+
+    const {
+        isLoading,
+        isError,
+        error,
+        data,
+        isFetching,
+        isPreviousData,
+    } = useQuery(['/movie', page], () => getTopMoviePage(page), {
+        keepPreviousData: true
+    })
+
+    if (isLoading) return <p>Loading Users...</p>
+
+    if (isError) return <p>Error: {error.message}</p>
+
+    const content = data.data?.map(movie => <TopMovie key={movie.id} movie={movie} />)
+
+    const lastPage = () => setPage(10)
+
+    const firstPage = () => setPage(1)
+
+    const pagesArray = Array(10).fill().map((_, index) => index + 1)
+
+    const nav = (
+        <nav className="nav-ex2">
+            <button onClick={firstPage} disabled={isPreviousData || page === 1}>&lt;&lt;</button>
+            { isPreviousData}
+            {pagesArray.map(pg => <PageButton key={pg} pg={pg} setPage={setPage} />)}
+            <button onClick={lastPage} disabled={isPreviousData || page === 10}>&gt;&gt;</button>
+        </nav>
+    )
+
+    return (
+        <>
+		<h1>Top Movies</h1>
+            <div>
+                {data.results?.map(movie => <TopMovie key={movie.title} movie={movie}/> )}
             </div>
-
-			
-
-			
-            
-		</div>
-
-		
-	);
+        
+            {nav}
+            {isFetching && <span className="loading">Loading...</span>}
+            {content}
+        </>
+    )
 }
-   
-  
-  export default Components;
+export default topMovies

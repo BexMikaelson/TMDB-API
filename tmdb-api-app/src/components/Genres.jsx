@@ -33,7 +33,7 @@ const Genres = ( {selectedGenres, setSelectedGenres, genres, setGenres, type, se
         fetchGenres()
 
         return () =>{
-            setGenres({})
+            setGenres([])
         }
     },[])
     

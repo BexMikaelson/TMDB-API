@@ -22,7 +22,7 @@ const mostPopularMovies = () => {
 
     if (isError) return <p>Error: {error.message}</p>
 
-    const content = data.data?.map(movie => <MovieModal key={movie.id} movie={movie} />)
+    const content = data.data?.map(movie => <MovieModal key={popularMovie.id} movie={movie} />)
 
     const lastPage = () => setPage(10)
 

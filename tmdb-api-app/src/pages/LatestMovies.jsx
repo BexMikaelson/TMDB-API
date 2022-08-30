@@ -31,7 +31,7 @@ const latestMovies = () => {
 
     if (isError) return <p>Error: {error.message}</p>
 
-    const content = data.data?.map(movie => <MovieModal key={movie.id} movie={movie} />)
+    const content = data.data?.map(movie => <MovieModal key={latestPageMovie.id} movie={movie} />)
 
     const lastPage = () => setPage(10)
 
@@ -60,7 +60,7 @@ const latestMovies = () => {
         setPage={setPage}
         />
             <div>
-                {data.results?.map(movie => <MovieModal key={movie.id} movie={movie}/> )}
+                {data.results?.map(movie => <MovieModal key={movie.title} movie={movie}/> )}
             </div>
         
             {nav}

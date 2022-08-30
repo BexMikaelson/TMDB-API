@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap"
 
 
 
-const Genres = ( {data,selectedGenres, setSelectedGenres, genres, setGenres, type, setPage,} ) => {
+const Genres = ( {selectedGenres, setSelectedGenres, genres, setGenres, type, setPage,} ) => {
 
     const handleAdd = (genre)=> {
         setSelectedGenres([...selectedGenres, genre])

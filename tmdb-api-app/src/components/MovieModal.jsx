@@ -28,7 +28,7 @@ const movieModal = ({movie}) => {
              <Button>Movie info</Button>
              </Link> 
 
-             <button type="button" className="btn btn-dark" onClick={handleShow} >Movie info</button>
+             <button  type="button" className="btn btn-dark" onClick={handleShow} >Movie info</button>
                   <Modal show={show} onHide={handleClose}>
                       <Modal.Header closeButton>
                         <Modal.Title></Modal.Title>

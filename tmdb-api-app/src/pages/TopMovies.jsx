@@ -3,9 +3,14 @@ import { getTopMoviePage } from '../api/axios'
 import { useState } from 'react'
 import MovieModal from '../components/MovieModal'
 import PageButton from '../components/PageButton'
+import Genres from "../components/Genres"
+import useGenre from '../components/hooks/useGenre'
 
 const topMovies = () => {
     const [page, setPage] = useState(1)
+    const [selectedGenres, setSelectedGenres] = useState([])
+    const [genres, setGenres] = useState([])
+    const genreforURL = useGenre(selectedGenres)
 
     const {
         isLoading,
@@ -14,7 +19,7 @@ const topMovies = () => {
         data,
         isFetching,
         isPreviousData,
-    } = useQuery(['/movie', page], () => getTopMoviePage(page), {
+    } = useQuery(['/movie', page, genreforURL], () => getTopMoviePage(page, genreforURL), {
         keepPreviousData: true
     })
 
@@ -22,7 +27,7 @@ const topMovies = () => {
 
     if (isError) return <p>Error: {error.message}</p>
 
-    const content = data.data?.map(movie => <MovieModal key={movie.id} movie={movie} />)
+    const content = data.data?.map(movie => <MovieModal key={topMoviePage.id} movie={movie} />)
 
     const lastPage = () => setPage(10)
 
@@ -42,8 +47,16 @@ const topMovies = () => {
     return (
         <>
 		<h1>Top Movies</h1>
+        <Genres
+        type= "movie"
+        selectedGenres={selectedGenres}
+        setSelectedGenres={setSelectedGenres}
+        genres={genres}
+        setGenres={setGenres}
+        setPage={setPage}
+        />
             <div>
-                {data.results?.map(movie => <MovieModal key={movie.title} movie={movie}/> )}
+                {data.results?.map(movie => <MovieModal key={movie.id} movie={movie}/> )}
             </div>
         
             {nav}

@@ -1,8 +1,8 @@
 import { useQuery } from 'react-query'
 import { getMostPopularMoviesPage } from '../api/axios'
 import { useState } from 'react'
-import PopularMovie from './PopularMovie'
 import PageButton from '../components/PageButton'
+import MovieModal from '../components/MovieModal'
 
 const mostPopularMovies = () => {
     const [page, setPage] = useState(1)
@@ -22,7 +22,7 @@ const mostPopularMovies = () => {
 
     if (isError) return <p>Error: {error.message}</p>
 
-    const content = data.data?.map(movie => <PopularMovie key={movie.id} movie={movie} />)
+    const content = data.data?.map(movie => <MovieModal key={movie.id} movie={movie} />)
 
     const lastPage = () => setPage(10)
 
@@ -43,7 +43,7 @@ const mostPopularMovies = () => {
         <>
 		<h1>Popular Movies</h1>
             <div>
-                {data.results?.map(movie => <PopularMovie key={movie.title} movie={movie}/> )}
+                {data.results?.map(movie => <MovieModal key={movie.title} movie={movie}/> )}
             </div>
         
             {nav}

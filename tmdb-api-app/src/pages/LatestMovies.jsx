@@ -2,11 +2,19 @@
 import { useQuery } from 'react-query'
 import { getLatestMoviesPage } from '../api/axios'
 import { useState } from 'react'
-import NewMovies from './NewMovies'
+import MovieModal from '../components/MovieModal'
 import PageButton from '../components/PageButton'
+import Genres from "../components/Genres"
+import useGenre from '../components/hooks/useGenre'
+
 
 const latestMovies = () => {
     const [page, setPage] = useState(1)
+    const [selectedGenres, setSelectedGenres] = useState([])
+    const [genres, setGenres] = useState([])
+    const genreforURL = useGenre(selectedGenres)
+    
+
 
     const {
         isLoading,
@@ -15,7 +23,7 @@ const latestMovies = () => {
         data,
         isFetching,
         isPreviousData,
-    } = useQuery(['/movie', page], () => getLatestMoviesPage(page), {
+    } = useQuery(['/movie', page, genreforURL], () => getLatestMoviesPage(page, genreforURL ), {
         keepPreviousData: true
     })
 
@@ -23,7 +31,7 @@ const latestMovies = () => {
 
     if (isError) return <p>Error: {error.message}</p>
 
-    const content = data.data?.map(movie => <NewMovies key={movie.id} movie={movie} />)
+    const content = data.data?.map(movie => <MovieModal key={movie.id} movie={movie} />)
 
     const lastPage = () => setPage(10)
 
@@ -43,8 +51,16 @@ const latestMovies = () => {
     return (
         <>
 		<h1>Lates Movies</h1>
+        <Genres
+        type= "movie"
+        selectedGenres={selectedGenres}
+        setSelectedGenres={setSelectedGenres}
+        genres={genres}
+        setGenres={setGenres}
+        setPage={setPage}
+        />
             <div>
-                {data.results?.map(movie => <NewMovies key={movie.title} movie={movie}/> )}
+                {data.results?.map(movie => <MovieModal key={movie.id} movie={movie}/> )}
             </div>
         
             {nav}

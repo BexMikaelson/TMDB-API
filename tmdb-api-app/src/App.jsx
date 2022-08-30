@@ -13,6 +13,7 @@ import MovieInfo from './pages/MovieInfo'
 
 
 
+
 // Initialze the client
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ function App() {
 				<Route path="/mostPopularMovies" element={<MostPopularMovies />} />
 				<Route path="/topMovies" element={<TopMovies/>} />
 				<Route path="/MovieInfo" element={<MovieInfo/>} />
+				
 				
 				
 			</Routes>

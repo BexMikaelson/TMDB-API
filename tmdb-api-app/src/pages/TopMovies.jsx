@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query'
 import { getTopMoviePage } from '../api/axios'
 import { useState } from 'react'
-import TopMovie from './TopMovie'
+import MovieModal from '../components/MovieModal'
 import PageButton from '../components/PageButton'
 
 const topMovies = () => {
@@ -22,7 +22,7 @@ const topMovies = () => {
 
     if (isError) return <p>Error: {error.message}</p>
 
-    const content = data.data?.map(movie => <TopMovie key={movie.id} movie={movie} />)
+    const content = data.data?.map(movie => <MovieModal key={movie.id} movie={movie} />)
 
     const lastPage = () => setPage(10)
 
@@ -43,7 +43,7 @@ const topMovies = () => {
         <>
 		<h1>Top Movies</h1>
             <div>
-                {data.results?.map(movie => <TopMovie key={movie.title} movie={movie}/> )}
+                {data.results?.map(movie => <MovieModal key={movie.title} movie={movie}/> )}
             </div>
         
             {nav}

@@ -59,7 +59,7 @@ const latestMovies = () => {
         setGenres={setGenres}
         setPage={setPage}
         />
-            <div>
+            <div className='grid-container'>
                 {data.results?.map(movie => <MovieModal key={movie.title} movie={movie}/> )}
             </div>
         

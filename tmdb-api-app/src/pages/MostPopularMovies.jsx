@@ -3,9 +3,14 @@ import { getMostPopularMoviesPage } from '../api/axios'
 import { useState } from 'react'
 import PageButton from '../components/PageButton'
 import MovieModal from '../components/MovieModal'
+import Genres from "../components/Genres"
+import useGenre from '../components/hooks/useGenre'
 
 const mostPopularMovies = () => {
     const [page, setPage] = useState(1)
+    const [selectedGenres, setSelectedGenres] = useState([])
+    const [genres, setGenres] = useState([])
+    const genreforURL = useGenre(selectedGenres)
 
     const {
         isLoading,
@@ -14,7 +19,7 @@ const mostPopularMovies = () => {
         data,
         isFetching,
         isPreviousData,
-    } = useQuery(['/movie', page], () => getMostPopularMoviesPage(page), {
+    } = useQuery(['/movie', page, genreforURL], () => getMostPopularMoviesPage(page, genreforURL), {
         keepPreviousData: true
     })
 
@@ -24,25 +29,33 @@ const mostPopularMovies = () => {
 
     const content = data.data?.map(movie => <MovieModal key={popularMovie.id} movie={movie} />)
 
-    const lastPage = () => setPage(10)
+    const lastPage = () => setPage( data.total_pages)
 
     const firstPage = () => setPage(1)
 
-    const pagesArray = Array(10).fill().map((_, index) => index + 1)
+    const pagesArray = Array(data.total_pages ).fill().map((_, index) => index + 1)
 
     const nav = (
         <nav className="nav-ex2">
             <button onClick={firstPage} disabled={isPreviousData || page === 1}>&lt;&lt;</button>
             { isPreviousData}
             {pagesArray.map(pg => <PageButton key={pg} pg={pg} setPage={setPage} />)}
-            <button onClick={lastPage} disabled={isPreviousData || page === 10}>&gt;&gt;</button>
+            <button onClick={lastPage} disabled={isPreviousData || page===data.total_pages}>&gt;&gt;</button>
         </nav>
     )
 
     return (
         <>
 		<h1>Popular Movies</h1>
-            <div>
+        <Genres
+        type= "movie"
+        selectedGenres={selectedGenres}
+        setSelectedGenres={setSelectedGenres}
+        genres={genres}
+        setGenres={setGenres}
+        setPage={setPage}
+        />
+            <div className='grid-container'>
                 {data.results?.map(movie => <MovieModal key={movie.title} movie={movie}/> )}
             </div>
         

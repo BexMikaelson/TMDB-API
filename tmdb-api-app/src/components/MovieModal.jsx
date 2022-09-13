@@ -3,13 +3,16 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button';
-import { Carousel, Modal} from 'react-bootstrap';
+import { Modal} from 'react-bootstrap';
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom'
 import Genres from './Genres';
+import Carousel from '../components/Carousel/Carousel';
+import axios from "axios";
 
 
-import "react-alice-carousel/lib/alice-carousel.css";
+import '../components/Carousel/Carousel.css'
+
 
 
 
@@ -24,7 +27,10 @@ const movieModal = ({movie, media_type, id}) => {
   
   
     return ( 
+    
     <Container className='container'>
+
+      
       <div className='movieModal '>
         
 
@@ -58,12 +64,7 @@ const movieModal = ({movie, media_type, id}) => {
                       <h6>Overview</h6>
                       <p>{movie.overview}</p>
 
-                      
-
-                      
-
-                      
-
+                      <Carousel ></Carousel>
                       
                       </Modal.Body>
                       <Modal.Footer>

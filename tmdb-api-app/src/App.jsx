@@ -10,6 +10,7 @@ import TopMovies from './pages/TopMovies'
 import {QueryClient, QueryClientProvider} from 'react-query';
 import MovieInfo from './pages/MovieInfo'
 import ActorPage from './pages/ActorPage'
+import ActorsPage from './pages/ActorsPage'
 
 
 
@@ -35,7 +36,8 @@ function App() {
 				<Route path="/mostPopularMovies" element={<MostPopularMovies />} />
 				<Route path="/topMovies" element={<TopMovies/>} />
 				<Route path="/MovieInfo" element={<MovieInfo/>} />
-				<Route path="/ActorPage" element={<ActorPage/>} />
+				<Route path="/ActorPage/:person_id" element={<ActorPage/>} />
+				<Route path="/ActorsPage" element={<ActorsPage/>} />
 
 				
 				

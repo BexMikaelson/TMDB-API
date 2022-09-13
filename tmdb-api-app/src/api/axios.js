@@ -22,6 +22,7 @@ export const getMostPopularMoviesPage = async (pageParam = 1, genreforURL) => {
     return response.data
 }
 
+//Get LatestMavies
 export const axiosLatestMovies = axios.create({
     baseURL: 'https://api.themoviedb.org/3'
 })
@@ -32,7 +33,7 @@ export const getLatestMoviesPage = async (pageParam = 1, genreforURL) => {
 }
 
 
-
+//Get TopMovies
 export const axiosTopMovies = axios.create({
     baseURL: 'https://api.themoviedb.org/3'
 })
@@ -49,8 +50,21 @@ export const axiosActor = axios.create({
 })
 
 
-export const getActor = async (actor_id) => {
-    const response = await axiosTopMovies.get(`/person/${actor_id}?api_key=05f52796b7985ed1e09a4067b247940c&language=en-US&append_to_response=credits`)
+export const getActor = async (person_id) => {
+    const response = await axiosActor.get(`/person/${person_id}?api_key=05f52796b7985ed1e09a4067b247940c&language=en-US&append_to_response=credits`)
+    return response.data
+}
+
+//Get the Credits
+export const axiosCredit = axios.create({
+    baseURL: 'https://api.themoviedb.org/3'
+})
+
+
+export const getCredits = async () => {
+    const response = await axiosCredit.get(
+        'https://api.themoviedb.org/3/movie/movie_id/credits?api_key=05f52796b7985ed1e09a4067b247940c&language=en-US'
+      );
     return response.data
 }
 

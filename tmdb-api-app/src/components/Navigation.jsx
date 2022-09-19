@@ -18,7 +18,8 @@ const Navigation = () => {
 						<Nav.Link as={NavLink} end to="/latestMovies">Latest Movies</Nav.Link>
 						<Nav.Link as={NavLink} end to="/topMovies">Top Movies</Nav.Link>
 						<Nav.Link as={NavLink} end to="/mostPopularMovies">Popular Movies</Nav.Link>
-						<Nav.Link as={NavLink} end to="/ActorsPage">Actors/Actress</Nav.Link>
+						<Nav.Link as={NavLink} end to='/actorsPage/:episode.id'>Actors/Actress</Nav.Link>
+						<Nav.Link as={NavLink} end to="/movieinfo/:movie_id">Movie info</Nav.Link>
 						
 						
 						

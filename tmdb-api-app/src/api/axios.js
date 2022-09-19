@@ -50,7 +50,7 @@ export const axiosActor = axios.create({
 })
 
 
-export const getActor = async (person_id) => {
+export const getActors = async (person_id) => {
     const response = await axiosActor.get(`/person/${person_id}?api_key=05f52796b7985ed1e09a4067b247940c&language=en-US&append_to_response=credits`)
     return response.data
 }
@@ -66,5 +66,16 @@ export const getCredits = async () => {
         'https://api.themoviedb.org/3/movie/movie_id/credits?api_key=05f52796b7985ed1e09a4067b247940c&language=en-US'
       );
     return response.data
+}
+
+const get = async (endpoint) => {
+    const response = await axios.get(endpoint)
+    console.log(response.data)
+    return response.data
+}
+
+// Get an actor
+export const getActor = (person_id) => {
+    return get(`https://api.themoviedb.org/3/person/${person_id}?api_key=05f52796b7985ed1e09a4067b247940c&language=en-US&append_to_response=credits`)
 }
 

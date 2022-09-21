@@ -19,8 +19,6 @@ import ActorsPage from './pages/ActorsPage'
 // Initialze the client
 const queryClient = new QueryClient();
 
-
-
 function App() {
 	return (
 		
@@ -36,9 +34,9 @@ function App() {
 				<Route path="/mostPopularMovies" element={<MostPopularMovies />} />
 				<Route path="/topMovies" element={<TopMovies/>} />
 				<Route path="/MovieInfo/:movie_id" element={<MovieInfo/>} />
-				<Route path='/ActorPage:episode.id' element={<ActorPage/>} />
+				{/* <Route path='/ActorPage:episode.id' element={<ActorPage/>} /> */}
 				
-				<Route path ="/ActorsPage/:episode.id" element={<ActorsPage/>} />
+				<Route path ="/ActorsPage/:person_id" element={<ActorsPage/>} />
 
 				
 				

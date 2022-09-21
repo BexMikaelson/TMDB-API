@@ -28,19 +28,19 @@ const mostPopularMovies = () => {
     if (isError) return <p>Error: {error.message}</p>
 
     const content = data.data?.map(movie => <MovieModal key={popularMovie.id} movie={movie} />)
-
-    const lastPage = () => setPage( data.total_pages)
+    const totalPages = 10
+    const lastPage = () => setPage(  totalPages)
 
     const firstPage = () => setPage(1)
 
-    const pagesArray = Array(data.total_pages ).fill().map((_, index) => index + 1)
+    const pagesArray = Array( totalPages ).fill().map((_, index) => index + 1)
 
     const nav = (
         <nav className="nav-ex2">
             <button onClick={firstPage} disabled={isPreviousData || page === 1}>&lt;&lt;</button>
             { isPreviousData}
             {pagesArray.map(pg => <PageButton key={pg} pg={pg} setPage={setPage} />)}
-            <button onClick={lastPage} disabled={isPreviousData || page===data.total_pages}>&gt;&gt;</button>
+            <button onClick={lastPage} disabled={isPreviousData || page=== totalPages}>&gt;&gt;</button>
         </nav>
     )
 

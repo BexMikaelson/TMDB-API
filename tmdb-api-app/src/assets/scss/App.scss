@@ -2,18 +2,70 @@
 
 body{
     background-color: lightgrey;
-    display: flex;
-    justify-content: center;
+   
 }
+
+.card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+   padding: 20px 20px 20px 20px;
+   margin: 20px 20px 20px 20px;
+   
+}
+
+
+ .img-fluid-actor{
+   width: 300px;
+   height: auto;
+   padding-right: 20px;
+  
+
+ }
+
+ .filmCard{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+ }
+
+.info-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+margin-top: 10px;
+  margin-bottom: 20px;
+  
+  
+}
+
+
 
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto;
     justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
   }
   @media only screen and (max-width: 800px) {
     .grid-container {
         display: grid;
         grid-template-columns: auto auto ;
       }
+
+      .img-fluid-actor{
+        width: 160px;
+        height: auto;
+        padding-right: 20px;
+        
+          
+        
+      
+      }
+
+ 
    }

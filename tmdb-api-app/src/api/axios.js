@@ -1,5 +1,28 @@
 import axios from "axios"
 
+axios.defaults.baseURL = 'https://api.themoviedb.org/3'
+
+const VITE_API_KEY = import.meta.env.VITE_API_KEY
+
+const get = async (endpoint) => {
+    const response = await axios.get(endpoint)
+    console.log(response.data)
+    return response.data
+}
+
+//actorspage
+export const getCharacters= (person_id) => {
+    return get(`/person/${person_id}?api_key=${VITE_API_KEY}&language=en-US&include_adult=false&append_to_response=credits`);
+}
+
+export default{
+    getCharacters,
+}
+
+// Get an actor
+// export const getActor = (person_id) => {
+//     return get(`https://api.themoviedb.org/3/person/${person_id}?api_key=05f52796b7985ed1e09a4067b247940c&language=en-US&append_to_response=credits`)
+// }
 
 
 
@@ -68,14 +91,11 @@ export const getCredits = async () => {
     return response.data
 }
 
-const get = async (endpoint) => {
-    const response = await axios.get(endpoint)
-    console.log(response.data)
-    return response.data
-}
+
 
 // Get an actor
-export const getActor = (person_id) => {
-    return get(`https://api.themoviedb.org/3/person/${person_id}?api_key=05f52796b7985ed1e09a4067b247940c&language=en-US&append_to_response=credits`)
-}
+// export const getActor = (person_id) => {
+//     return get(`https://api.themoviedb.org/3/person/${person_id}?api_key=05f52796b7985ed1e09a4067b247940c&language=en-US&append_to_response=credits`)
+// }
+
 

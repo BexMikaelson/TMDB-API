@@ -58,7 +58,7 @@ const homePage = () => {
         setGenres={setGenres}
         setPage={setPage}
         />
-            <div className='grid-container  '>
+            <div className='grid-container'>
                 {data.results?.map(movie => <MovieModal key={movie.id} movie={movie}/> )}
             </div>
         

@@ -1,1 +1,29 @@
 @import "react-alice-carousel/lib/alice-carousel.css";
+
+.carouselItem{
+   margin-right: 40px;
+    display: inline-block;
+    text-align: center; 
+}
+
+.caroucel-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.carouselItem__img {
+    height: 270px;
+    cursor: pointer;
+}
+
+.carousel-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carouselItem__txt {
+    font-size: 0.8rem;
+}
+

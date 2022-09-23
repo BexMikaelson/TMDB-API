@@ -7,7 +7,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 
 const Navigation = () => {
 	return (
-		<Navbar bg="dark" variant="dark" expand="md">
+		<Navbar className='header' bg="dark" variant="dark" expand="md">
 			<Container>
 				<Navbar.Brand as={Link} to="/">Your Ultimate Movie API</Navbar.Brand>
 
@@ -18,17 +18,12 @@ const Navigation = () => {
 						<Nav.Link as={NavLink} end to="/latestMovies">Latest Movies</Nav.Link>
 						<Nav.Link as={NavLink} end to="/topMovies">Top Movies</Nav.Link>
 						<Nav.Link as={NavLink} end to="/mostPopularMovies">Popular Movies</Nav.Link>
-						<Nav.Link as={NavLink} end to='/actorsPage/:episode.id'>Actors/Actress</Nav.Link>
-						<Nav.Link as={NavLink} end to="/movieinfo/:movie_id">Movie info</Nav.Link>
+						
 						
 						
 						
 					</Nav>
-					<DropdownButton id="dropdown-basic-button" title="Dropdown button" bg="dark" variant="dark">
-                      <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                      <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                      <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                    </DropdownButton>
+					
 				</Navbar.Collapse>
 			</Container>
 		</Navbar>

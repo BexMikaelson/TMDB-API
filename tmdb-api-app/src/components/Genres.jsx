@@ -3,6 +3,9 @@ import { useEffect } from "react"
 import { Button } from "react-bootstrap"
 
 
+const VITE_API_KEY = import.meta.env.VITE_API_KEY
+
+
 
 const Genres = ( {selectedGenres, setSelectedGenres, genres, setGenres, type, setPage,} ) => {
 
@@ -21,10 +24,12 @@ const Genres = ( {selectedGenres, setSelectedGenres, genres, setGenres, type, se
         setPage(1)
     }
 
-    const fetchGenres = async () =>{
-        const {data} = await axios.get('https://api.themoviedb.org/3/genre/list?api_key=05f52796b7985ed1e09a4067b247940c&language=en-US')
+    const fetchGenres = async() =>{
+       
+         
+         const {data} = await axios.get(`https://api.themoviedb.org/3/genre/list?api_key=${VITE_API_KEY}&language=en-US`)
 
-        setGenres(data.genres)
+         setGenres(data.genres)
     }
     
      console.log(genres)

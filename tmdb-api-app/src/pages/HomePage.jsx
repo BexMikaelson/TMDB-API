@@ -1,10 +1,11 @@
 import { useQuery } from 'react-query'
-import { getGenreListPage } from '../api/axios'
+import { getHomePage } from '../api/axios'
 import { useState } from 'react'
 import MovieModal from '../components/MovieModal'
 import PageButton from '../components/PageButton'
 import Genres from "../components/Genres"
 import useGenre from '../components/hooks/useGenre'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 
 const homePage = () => {
@@ -22,11 +23,11 @@ const homePage = () => {
         data,
         isFetching,
         isPreviousData,
-    } = useQuery(['/discover', page, genreforURL], () => getGenreListPage(page, genreforURL ), {
+    } = useQuery(['/discover', page, genreforURL], () => getHomePage(page, genreforURL ), {
         keepPreviousData: true
     })
 
-    if (isLoading) return <p>Loading Users...</p>
+    if (isLoading) return <LoadingSpinner></LoadingSpinner> 
 
     if (isError) return <p>Error: {error.message}</p>
 

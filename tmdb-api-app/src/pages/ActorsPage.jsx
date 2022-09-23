@@ -1,12 +1,12 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import Alert from 'react-bootstrap/Alert'
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap'
 import { useQuery } from 'react-query'
 import Button from 'react-bootstrap/Button'
 const API_IMG = 'https://image.tmdb.org/t/p/w500'
 import { getCharacters } from '../api/axios'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 
 const ActorPage = () => {
@@ -15,19 +15,16 @@ const ActorPage = () => {
 
      const{data, isLoading, isError, error} = useQuery(['person', person_id ], ()=> getCharacters(person_id), {
         keepPreviousData: true
-     }
+     } 
     )
+
+    if (isLoading) return <LoadingSpinner></LoadingSpinner> 
+
+    if (isError) return <p>Error: {error.message}</p>
 
   return (
     <>
     <h1 className='grid-container'>Actor Page</h1>
-
-    {isLoading && (<p className='my-3'>Loading ...</p>)}
-
-    {isError && (<Alert>
-        <p>Oh no, error!</p>
-        <p>{error.message}</p>
-    </Alert>)}
 
     {data && (
     <>

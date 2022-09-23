@@ -41,9 +41,6 @@ const Gallery = ( {cast} ) => {
     300: {
       items: 2,
     },
-    // 1024: {
-    //   items: 7,
-    // },
   };
 
   return (  

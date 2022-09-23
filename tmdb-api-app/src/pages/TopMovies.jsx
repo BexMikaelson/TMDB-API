@@ -5,6 +5,7 @@ import MovieModal from '../components/MovieModal'
 import PageButton from '../components/PageButton'
 import Genres from "../components/Genres"
 import useGenre from '../components/hooks/useGenre'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 const topMovies = () => {
     const [page, setPage] = useState(1)
@@ -19,11 +20,11 @@ const topMovies = () => {
         data,
         isFetching,
         isPreviousData,
-    } = useQuery(['/movie', page, genreforURL], () => getTopMoviePage(page, genreforURL), {
+    } = useQuery(['topmovies', page, genreforURL], () => getTopMoviePage(page, genreforURL), {
         keepPreviousData: true
     })
 
-    if (isLoading) return <p>Loading Users...</p>
+    if (isLoading) return <LoadingSpinner></LoadingSpinner> 
 
     if (isError) return <p>Error: {error.message}</p>
 

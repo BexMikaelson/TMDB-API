@@ -47,7 +47,7 @@ const topMovies = () => {
 
     return (
         <>
-		<h1>Top Movies</h1>
+		<h1 className="PageTitle container">Top Movies</h1>
         <Genres
         type= "movie"
         selectedGenres={selectedGenres}

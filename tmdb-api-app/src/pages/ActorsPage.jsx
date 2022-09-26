@@ -52,7 +52,8 @@ const ActorPage = () => {
                                 <ListGroupItem>Title: {cred.title}</ListGroupItem>
                                 <ListGroupItem>Character: {cred.character}</ListGroupItem>
                                 <div>
-                                <Button className='info-button' as={Link} to={`/movie/${cred.id}`} variant="primary">Read more....</Button>
+                                {/* <Button className='info-button' as={Link} to={`/movie/${cred.id}`} variant="primary">Read more....</Button> */}
+                                <Button className='info-button' as={Link} to={`/MovieInfo/${cred.id}`} variant="primary">Read more....</Button>
                                 </div>
                         </ListGroup>
                     ))}

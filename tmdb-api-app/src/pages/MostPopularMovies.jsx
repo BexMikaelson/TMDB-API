@@ -29,12 +29,12 @@ const mostPopularMovies = () => {
 	const content = data.data?.map((movie) => (
 		<MovieModal key={popularMovie.id} movie={movie} />
 	));
-	const totalPages = 10;
-	const lastPage = () => setPage(totalPages);
+	// const totalPages = 10;
+	const lastPage = () => setPage(10);
 
 	const firstPage = () => setPage(1);
 
-	const pagesArray = Array(totalPages)
+	const pagesArray = Array(10)
 		.fill()
 		.map((_, index) => index + 1);
 
@@ -49,7 +49,7 @@ const mostPopularMovies = () => {
 			))}
 			<button
 				onClick={lastPage}
-				disabled={isPreviousData || page === totalPages}
+				disabled={isPreviousData || page === 10}
 			>
 				&gt;&gt;
 			</button>
@@ -58,7 +58,7 @@ const mostPopularMovies = () => {
 
 	return (
 		<>
-			<h1>Popular Movies</h1>
+			<h1 className="PageTitle container">Popular Movies</h1>
 			<Genres
 				type="movie"
 				selectedGenres={selectedGenres}

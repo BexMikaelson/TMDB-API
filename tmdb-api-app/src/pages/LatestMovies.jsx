@@ -50,7 +50,7 @@ const latestMovies = () => {
 
     return (
         <>
-		<h1>Lates Movies</h1>
+		<h1 className="PageTitle container">Lates Movies</h1>
         <Genres
         type= "movie"
         selectedGenres={selectedGenres}

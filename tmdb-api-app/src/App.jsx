@@ -9,7 +9,7 @@ import MostPopularMovies from './pages/MostPopularMovies'
 import TopMovies from './pages/TopMovies'
 import {QueryClient, QueryClientProvider} from 'react-query';
 import MovieInfo from './pages/MovieInfo'
-import ActorPage from './pages/MoviePage'
+
 import ActorsPage from './pages/ActorsPage'
 import MoviePage from './pages/MoviePage'
 

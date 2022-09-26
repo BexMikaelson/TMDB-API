@@ -44,7 +44,7 @@ const movieModal = ({ movie, media_type,}) => {
 					<p> {movie.release_date}</p>
 					<p> {movie.cast} </p>
 
-					{/* <Button as={Link} to={`/MoviePage/${id}`} variant="primary">Read more....</Button> */}
+					<Button as={Link} to={`/MovieInfo/${id}`} variant="primary">Read more....</Button>
 
 					<div className='info-button'>
 						<button

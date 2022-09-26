@@ -8,6 +8,7 @@ import useGenre from '../components/hooks/useGenre'
 import LoadingSpinner from '../components/LoadingSpinner'
 
 
+
 const homePage = () => {
     const [page, setPage] = useState(1)
     const [selectedGenres, setSelectedGenres] = useState([])
@@ -50,7 +51,7 @@ const homePage = () => {
 
     return (
         <>
-		<h1> Movies</h1>
+		<h1 className="PageTitle container"> Movies</h1>
         <Genres
         type= "movie"
         selectedGenres={selectedGenres}

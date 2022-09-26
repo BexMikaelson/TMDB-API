@@ -43,7 +43,9 @@ const Genres = ( {selectedGenres, setSelectedGenres, genres, setGenres, type, se
     },[])
     
     return ( 
-    <div>Genres
+        
+    <div className="genres container ">
+        <h4>Genres</h4>
         <div>
         {selectedGenres && selectedGenres?.map((genre) => <Button key={genre.id} type="button" className="btn btn-primary" onClick={()=> handleRemove(genre)}> {genre.name} </Button>   )}
 

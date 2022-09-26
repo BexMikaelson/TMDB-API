@@ -20,7 +20,7 @@ export const getHomePage= (pageParam = 1, genreforURL) => {
 }
 
 export const getMovieInfoPage= (movie_id) => {
-    return get(`https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${VITE_API_KEY}&language=en-US&include_adult=false&append_to_response=credits`)
+    return get(`/discover/movie/${movie_id}/credits?api_key=${VITE_API_KEY}&language=en-US&include_adult=false&append_to_response=credits`)
 }
 
 export const getMostPopularMoviesPage= (pageParam = 1, genreforURL) => {

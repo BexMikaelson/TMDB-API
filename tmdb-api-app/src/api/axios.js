@@ -20,7 +20,7 @@ export const getHomePage= (pageParam = 1, genreforURL) => {
 }
 
 export const getMovieInfoPage= (movie_id) => {
-    return get(`/discover/movie/${movie_id}/credits?api_key=${VITE_API_KEY}&language=en-US&include_adult=false&append_to_response=credits`)
+    return get(`/movie/${movie_id}?api_key=${VITE_API_KEY}&language=en-US&include_adult=false&append_to_response=credits`)
 }
 
 export const getMostPopularMoviesPage= (pageParam = 1, genreforURL) => {
@@ -34,6 +34,11 @@ export const getLatestMoviesPage= (pageParam = 1, genreforURL) => {
 export const getTopMoviePage= (pageParam = 1, genreforURL) => {
     return get(`/movie/top_rated?api_key=${VITE_API_KEY}&language=en-US&include_adult=false&append_to_response=credits,&page=${pageParam}&with_genres=${genreforURL}`)
 }
+
+export const getMovieCredits = (movie_id) =>{
+    return get(`https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${VITE_API_KEY}&language=en-US&include_adult=false&append_to_response=credits`)
+
+  }
 
 
 export default{

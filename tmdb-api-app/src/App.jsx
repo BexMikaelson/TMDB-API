@@ -34,7 +34,7 @@ function App() {
 				<Route path="/latestMovies/" element={<LatestMovies/>} />
 				<Route path="/mostPopularMovies" element={<MostPopularMovies />} />
 				<Route path="/topMovies" element={<TopMovies/>} />
-				<Route path="/MovieInfo/:movie_id" element={<MovieInfo/>} />
+				<Route path="/MovieInfo/:movie_id" element={<MovieInfo />} />
 				{/* <Route path='/ActorPage:episode.id' element={<ActorPage/>} /> */}
 				<Route path="/MoviePage/:movie_id" element={<MoviePage/>} />
 				

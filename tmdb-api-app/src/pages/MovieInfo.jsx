@@ -1,29 +1,40 @@
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import React from "react";
 import { getMovieInfoPage, getMovieCredits } from "../api/axios";
 import LoadingSpinner from "../components/LoadingSpinner";
-import Carousel from '../components/Carousel/Carousel';
+import Carousel from "../components/Carousel/Carousel";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const API_IMG = "https://image.tmdb.org/t/p/w500";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 
 const MovieInfo = () => {
 	const { movie_id } = useParams();
 
-	const { data: movie, isLoading, isError, error } = useQuery(
-		["movieinfo", movie_id],
-		() => getMovieInfoPage(movie_id),
-		{
-			keepPreviousData: true,
-		}
-	);
-	const {data: credits, isLoading: isLoadingCredits, isError: isErrorCredits, error: errorCredits} = useQuery(['movieCredits', movie_id], () => getMovieCredits(movie_id))
+	const {
+		data: movie,
+		isLoading,
+		isError,
+		error,
+	} = useQuery(["movieinfo", movie_id], () => getMovieInfoPage(movie_id), {
+		keepPreviousData: true,
+	});
+	const {
+		data: credits,
+		isLoading: isLoadingCredits,
+		isError: isErrorCredits,
+		error: errorCredits,
+	} = useQuery(["movieCredits", movie_id], () => getMovieCredits(movie_id));
 
 	if (isLoading || isLoadingCredits) return <LoadingSpinner />;
 
-	if (isError || isErrorCredits) return <p>Error Movie: {error?.message}. Error Credits: {errorCredits?.message}</p>;
+	if (isError || isErrorCredits)
+		return (
+			<p>
+				Error Movie: {error?.message}. Error Credits:{" "}
+				{errorCredits?.message}
+			</p>
+		);
 
 	// const handleShow = () => {}
 	return (
@@ -39,7 +50,6 @@ const MovieInfo = () => {
 						<h4>IMDb: {movie.vote_average}</h4>
 						<h5>Release Date: {movie.release_date}</h5>
 
-						
 						<h6>Overview</h6>
 						<p>{movie.overview}</p>
 					</div>

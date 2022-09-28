@@ -5,7 +5,7 @@ import PageButton from "../components/PageButton";
 import MovieModal from "../components/MovieModal";
 import Genres from "../components/Genres";
 import useGenre from "../components/hooks/useGenre";
-import LoadingSpinner from '../components/LoadingSpinner'
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const mostPopularMovies = () => {
 	const [page, setPage] = useState(1);
@@ -22,14 +22,14 @@ const mostPopularMovies = () => {
 			}
 		);
 
-	if (isLoading) return <LoadingSpinner></LoadingSpinner>
+	if (isLoading) return <LoadingSpinner/>;
 
 	if (isError) return <p>Error: {error.message}</p>;
 
 	const content = data.data?.map((movie) => (
 		<MovieModal key={popularMovie.id} movie={movie} />
 	));
-	// const totalPages = 10;
+	
 	const lastPage = () => setPage(10);
 
 	const firstPage = () => setPage(1);
@@ -47,10 +47,7 @@ const mostPopularMovies = () => {
 			{pagesArray.map((pg) => (
 				<PageButton key={pg} pg={pg} setPage={setPage} />
 			))}
-			<button
-				onClick={lastPage}
-				disabled={isPreviousData || page === 10}
-			>
+			<button onClick={lastPage} disabled={isPreviousData || page === 10}>
 				&gt;&gt;
 			</button>
 		</nav>

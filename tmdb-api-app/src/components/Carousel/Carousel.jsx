@@ -35,7 +35,7 @@ const Gallery = ( {cast} ) => {
   
 
   const responsive = {
-    0: {
+    1000: {
       items: 3,
     },
     300: {

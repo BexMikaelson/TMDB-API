@@ -10,61 +10,82 @@ import LoadingSpinner from '../components/LoadingSpinner'
 
 
 const ActorPage = () => {
-    const { person_id } = useParams()
-   
+	const { person_id } = useParams();
 
-     const{data, isLoading, isError, error} = useQuery(['person', person_id ], ()=> getCharacters(person_id), {
-        keepPreviousData: true
-     } 
-    )
+	const { data, isLoading, isError, error } = useQuery(
+		["person", person_id],
+		() => getCharacters(person_id),
+		{
+			keepPreviousData: true,
+		}
+	);
 
-    if (isLoading) return <LoadingSpinner></LoadingSpinner> 
+	if (isLoading) return <LoadingSpinner />;
 
-    if (isError) return <p>Error: {error.message}</p>
+	if (isError) return <p>Error: {error.message}</p>;
 
-  return (
-    <>
-    <h1 className='grid-container'>Actor Page</h1>
+	return (
+		<>
+			<h1 className="grid-container">Actor Page</h1>
 
-    {data && (
-    <>
-    
-    <hr />
-    <div className='card'>
-        <div className='grid-container '>
-          <img className='img-fluid-actor' src={`${API_IMG}${data.profile_path}`}/>
-          
-                <div className='info-box'>
-                <h2>{data.name}</h2>
-                    <p>Born: {data.birthday}</p>
-                    <p>From: {data.place_of_birth}</p>
-                    <p>About: {data.biography}</p>
-                </div>
-        </div>
-            <hr />
-            <h3>Films:</h3>
-                <div className='grid-container '>
-                    {data.credits.cast.map(cred =>(
-                        <ListGroup key={cred.id} className="w-20 filmCard">
-                            {cred.poster_path && (
-                                <img className='img-fluid-actor' src={`${API_IMG}${cred.poster_path}`} alt= '' />
-                            )}
-                                <ListGroupItem>Title: {cred.title}</ListGroupItem>
-                                <ListGroupItem>Character: {cred.character}</ListGroupItem>
-                                <div>
-                                {/* <Button className='info-button' as={Link} to={`/movie/${cred.id}`} variant="primary">Read more....</Button> */}
-                                <Button className='info-button' as={Link} to={`/MovieInfo/${cred.id}`} variant="primary">Read more....</Button>
-                                </div>
-                        </ListGroup>
-                    ))}
-                </div>
-        </div>
-    </>
-    )}
-    </>
+			{data && (
+				<>
+					<hr />
+					<div className="container ">
+						<div className="card">
+							<img
+								className="img-fluid-actor"
+								src={`${API_IMG}${data.profile_path}`}
+							/>
 
-  )
-}
+							<div className="info-box ">
+								<h2>{data.name}</h2>
+								<p>Born: {data.birthday}</p>
+								<p>From: {data.place_of_birth}</p>
+								<p>About: {data.biography}</p>
+							</div>
+						{/* </div> */}
+						<hr />
+						<h3>Films:</h3>
+						<div className="grid-container   ">
+							{data.credits.cast.map((cred) => (
+								<ListGroup
+									key={cred.id}
+									className="w-20 filmCard"
+								>
+									{cred.poster_path && (
+										<img
+											className="img-fluid-actor-film"
+											src={`${API_IMG}${cred.poster_path}`}
+											alt="poster"
+										/>
+									)}
+									<ListGroupItem>
+										Title: {cred.title}
+									</ListGroupItem>
+									<ListGroupItem>
+										Character: {cred.character}
+									</ListGroupItem>
+									<div>
+										<Button
+											className="info-button"
+											as={Link}
+											to={`/MovieInfo/${cred.id}`}
+											variant="primary"
+										>
+											Read more....
+										</Button>
+									</div>
+								</ListGroup>
+							))}
+						</div>
+                        </div>
+					</div>
+				</>
+			)}
+		</>
+	);
+};
 
  
 export default ActorPage;

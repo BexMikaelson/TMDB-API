@@ -17,14 +17,14 @@ import '../components/Carousel/Carousel.css'
 
 
 
-const movieModal = ({ movie, media_type,}) => {
-  const [show, setShow]=useState(false);
+const movieModal = ({ movie}) => {
+//   const [show, setShow]=useState(false);
 
-    const handleShow=()=>setShow(true);
-    const handleClose=()=>setShow(false);
-    const id = movie.id; 
+//     const handleShow=()=>setShow(true);
+//     const handleClose=()=>setShow(false);
+     const id = movie.id; 
 
-    const {data, isLoading, isError, error} = useQuery(['movieCredits', id], () => getMovieCredits(movie.id))
+    // const {data, isLoading, isError, error} = useQuery(['movieCredits', id], () => getMovieCredits(movie.id))
       
     return (
 		<Container className="container">
@@ -40,9 +40,9 @@ const movieModal = ({ movie, media_type,}) => {
 					<p> {movie.release_date}</p>
 					<p> {movie.cast} </p>
 
-					<Button as={Link} to={`/MovieInfo/${id}`} variant="primary">Read more....</Button>
+					<Button className='info-button' as={Link} to={`/MovieInfo/${id}`} variant="primary">Movie info</Button>
 
-					<div className='info-button'>
+					{/* <div className='info-button'>
 						<button
 							type="button"
 							className="btn btn-dark"
@@ -50,11 +50,11 @@ const movieModal = ({ movie, media_type,}) => {
 						>
 							Movie info
 						</button>
-					</div>
+					</div> */}
 				</Card.Body>
 			</div>
 
-			<Modal show={show} onHide={handleClose}>
+			{/* <Modal show={show} onHide={handleClose}>
 				<Modal.Header closeButton>
 					<Modal.Title></Modal.Title>
 				</Modal.Header>
@@ -82,7 +82,7 @@ const movieModal = ({ movie, media_type,}) => {
 						Close
 					</Button>
 				</Modal.Footer>
-			</Modal>
+			</Modal> */}
 		</Container>
 	);
 }

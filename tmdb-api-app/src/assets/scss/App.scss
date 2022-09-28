@@ -2,16 +2,10 @@
 
 body{
     background-color: lightgrey;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
    
 }
 
-// .header{
-//   width: 100%;
-//   display: block;
-// }
+
 
 
 .nav-ex2{
@@ -43,19 +37,27 @@ body{
 
 
  .img-fluid-actor{
-   width: 300px;
+  width: 300px;
    height: auto;
-   padding-right: 20px;
+   padding-bottom: 20px;
+  }
+
+  .img-fluid-actor-film{
+    width: 250px;
+     height: auto;
+     padding-bottom: 20px;
+    }
+
+ .img-fluid-movie-poster{
+  width: 350px;
+  height: auto;
+  padding-bottom: 20px;
   
 
  }
 
- .filmCard{
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
- }
+
 
 .info-button{
   display: flex;
@@ -77,21 +79,34 @@ body{
     margin-bottom: 20px;
     
   }
-  @media only screen and (max-width: 820px) {
+
+  .filmCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+ 
+  @media only screen and (max-width: 1000px) {
     .grid-container {
-        display: grid;
         grid-template-columns: auto auto ;
       }
 
-      .img-fluid-actor{
+      .img-fluid-actor-film{
         width: 160px;
         height: auto;
-        padding-right: 20px;
-        
-          
-        
-      
-      }
+        // padding-right: 20px;
+        }
+
+        .img-fluid-movie-poster{
+          width: 280px;
+          }
+
+          // .actor-films{
+          //   grid-template-columns: auto auto;
+           
+          //   }
 
  
    }
@@ -99,10 +114,10 @@ body{
   @media only screen and (max-width: 1300px) {
     
 
-     .img-fluid-actor{
-       width: 160px;
+     .img-fluid-actor-film{
+       width: 170px;
        height: auto;
-       padding-right: 20px;
+      
         
           
         
@@ -110,4 +125,15 @@ body{
      }
 
  
+  }
+
+  @media only screen and (max-width: 400px){
+    .img-fluid-movie-poster{
+      width: 200px;
+      }
+
+      .grid-container{
+        grid-template-columns: auto;
+       
+        }
   }

@@ -3,48 +3,31 @@ import Navigation from './components/Navigation'
 import HomePage from './pages/HomePage'
 import NotFound from './pages/NotFound'
 import './assets/scss/App.scss'
-import './App.css'
-import LatestMovies from './pages/LatestMovies'
-import MostPopularMovies from './pages/MostPopularMovies'
+import CinemaPage from './pages/CinemaPage'
+import PopularMoviesPage from './pages/PopularMoviesPage'
 import TopMovies from './pages/TopMovies'
-import {QueryClient, QueryClientProvider} from 'react-query';
-import MovieInfo from './pages/MovieInfo'
-import ActorsPage from './pages/ActorsPage'
+import MoviePage from './pages/MoviePage'
+import ActorPage from './pages/ActorPage'
+import GenrePage from './pages/GenrePage'
 
-
-
-
-
-
-// Initialze the client
-const queryClient = new QueryClient();
 
 function App() {
 	return (
-		
-		<>
-		<QueryClientProvider client={queryClient}>
+		<div id="App">
 			<Navigation />
+
 			<Routes>
-				
-
 				<Route path="/" element={<HomePage />} />
+				<Route path="/now_playing" element={<CinemaPage />} />
+				<Route path="/popular" element={<PopularMoviesPage />} />
+				<Route path="/top_rated" element={<TopMovies />}/>
+				<Route path="/movie/:movie_id" element={<MoviePage/>} />
+				<Route path="/actor/:actor_id" element={<ActorPage/>} />
+				<Route path="/genres/:genre_id" element={<GenrePage/>} />
 				<Route path="*" element={<NotFound />} />
-				<Route path="/latestMovies/" element={<LatestMovies/>} />
-				<Route path="/mostPopularMovies" element={<MostPopularMovies />} />
-				<Route path="/topMovies" element={<TopMovies/>} />
-				<Route path="/MovieInfo/:movie_id" element={<MovieInfo />} />
-				
-				
-				<Route path ="/ActorsPage/:person_id" element={<ActorsPage/>} />
-
-				
-				
-				
 			</Routes>
-		</QueryClientProvider>
-		</>
-	);
+		</div>
+	)
 }
 
 export default App

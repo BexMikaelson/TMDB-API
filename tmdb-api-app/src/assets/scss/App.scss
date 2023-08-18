@@ -1,139 +1,39 @@
 @import 'bootstrap/scss/bootstrap';
 
 body {
-  background-color: lightgrey;
-
+  background-color: rgb(173, 232, 173);
 }
 
-
-
-
-.nav-ex2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-
-}
-
-.pagination-button {
-
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 5px;
-}
-
-
-
-.card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding: 20px 20px 20px 20px;
-  margin: 20px 20px 20px 20px;
-
-}
-
-
-.img-fluid-actor {
+.castList {
+  background-color: whitesmoke;
   width: 300px;
-  height: auto;
-  padding-bottom: 20px;
 }
 
-.img-fluid-actor-film {
-  width: 250px;
-  height: auto;
-  padding-bottom: 20px;
+.movieCard {
+  background-color: rgb(255, 255, 255)
+  
+}
+.List-Wrapper {
+  
+  margin-top: 40px;
+  
+  
 }
 
-.img-fluid-movie-poster {
-  width: 350px;
-  height: auto;
-  padding-bottom: 20px;
-
-
-}
-
-
-
-
-.info-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  margin-bottom: 20px;
-
-
-}
-
-
-
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-
+.info-box{
+  
 }
 
 .filmCard {
+  width: 200px;
+  background-color: whitesmoke;
+}
+
+.listGroupItem {
   display: flex;
-  justify-content: center;
-  align-items: center;
-
+  flex-direction: column;
 }
 
 
-@media only screen and (max-width: 1000px) {
-  .grid-container {
-    grid-template-columns: auto auto;
-  }
-
-  .img-fluid-actor-film {
-    width: 160px;
-    height: auto;
-    // padding-right: 20px;
-  }
-
-  .img-fluid-movie-poster {
-    width: 280px;
-  }
-
-  // .actor-films{
-  //   grid-template-columns: auto auto;
-
-  //   }
 
 
-}
-
-@media only screen and (max-width: 1300px) {
-
-
-  .img-fluid-actor-film {
-    width: 170px;
-    height: auto;
-
-
-
-
-
-  }
-
-
-}
-
-@media only screen and (max-width: 400px) {
-  .img-fluid-movie-poster {
-    width: 200px;
-  }
-
-  .grid-container {
-    grid-template-columns: auto;
-
-  }
-}

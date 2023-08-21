@@ -32,7 +32,7 @@ const GenrePage = () => {
 
         <div>Searching by genres:</div>
 
-            {isLoading && (<p>Loading ....</p>)}
+            {isLoading && (<p>Loading!!!</p>)}
 
             {isError && (<p>Error!{error.message}</p>)}
 

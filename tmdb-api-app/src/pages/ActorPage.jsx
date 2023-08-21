@@ -4,20 +4,21 @@ import { Link } from 'react-router-dom'
 import Container  from 'react-bootstrap/Container'
 import Alert from 'react-bootstrap/Alert'
 import {getActor} from '../services/TMDB'
-import { Card, ListGroup, ListGroupItem } from 'react-bootstrap'
+import { ListGroup, ListGroupItem } from 'react-bootstrap'
 import { useQuery } from 'react-query'
 import Button from 'react-bootstrap/Button'
-import LoadingSpinner from "../components/LoadingSpinner";
 
 
 const ActorPage = () => {
     const { actor_id } = useParams()
     const { data, isLoading, isError, error} = useQuery(['actor', actor_id ], () => getActor(actor_id))
 
-
   return (
     <Container>
     <h1 className='pt-3'>Actor Page</h1>
+    
+    {isLoading && (<p className='my-3'>Loading!!!</p>)}
+    
 
     {isError && (<Alert>
         <p>error!</p>

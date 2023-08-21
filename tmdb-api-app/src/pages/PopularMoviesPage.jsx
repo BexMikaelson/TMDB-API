@@ -7,10 +7,11 @@ import { getPopularMovies } from '../services/TMDB'
 const PopularMoviesPage = () => {
 
     const { isLoading, isError, error, data} = useQuery(['popularMovies'], getPopularMovies)
+
   
     return (
       <Container>
-          <h1>PopularMoviesPage</h1>
+          <h1>Popular Movies</h1>
               {isLoading && (<p className='my-3'>Loading!!!</p>)}
   
               {isError && (

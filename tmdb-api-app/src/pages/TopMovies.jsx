@@ -8,7 +8,7 @@ const ToplistedMoviesPage = () => {
     const { isLoading, isError, error, data} = useQuery(['toplistedMovies'], getToplistedMovies)
   return (
     <Container>
-          <h2>Toplisted Movies</h2>
+          <h2>Top Rated Movies</h2>
 
               {isLoading && (<p className='my-3'>Loading!!!</p>)}
 

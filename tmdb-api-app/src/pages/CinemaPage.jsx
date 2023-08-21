@@ -12,7 +12,7 @@ const CinemaMoviesPage = () => {
   return (
     <Container>
       <h1>Now playing on the big screen</h1>
-          {isLoading && (<p className='my-3'>Loading...</p>)}
+          {isLoading && (<p className='my-3'>Loading!!!</p>)}
 
           {isError && ( 
               <Alert variant="danger">

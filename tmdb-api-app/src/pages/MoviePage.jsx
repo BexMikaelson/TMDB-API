@@ -18,7 +18,7 @@ const MoviePage = () => {
     <Container>
         
     <h3>Movie Page</h3>
-    {isLoading && (<p className='my-3'>Loading ...</p>)}
+    {isLoading && (<p className='my-3'>Loading!!!</p>)}
 
     {isError && (
         <Alert>

@@ -10,11 +10,11 @@ const ToplistedMoviesPage = () => {
     <Container>
           <h2>Toplisted Movies</h2>
 
-              {isLoading && (<p className='my-3'>Loading...</p>)}
+              {isLoading && (<p className='my-3'>Loading!!!</p>)}
 
               {isError && ( 
                   <Alert variant="danger">
-                      <h4>Ops, error!</h4>
+                      <h4>error!</h4>
                       <p>{error.message}</p>
                   </Alert>
                )}

@@ -17,9 +17,12 @@ const Navigation = () => {
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ms-auto">
 						<Nav.Link as={NavLink} end to="/">Home</Nav.Link>
+						<Nav.Link as={NavLink} end to="/now_playing">Cinema Movies</Nav.Link>
+						<Nav.Link as={NavLink} end to="/popular">Popular Movies</Nav.Link>
+						<Nav.Link as={NavLink} end to="/top_rated">Top Rated Movies</Nav.Link>
 						{data && (
 							<Dropdown>
-								<Dropdown.Toggle variant="dark" id="dropdown-basic">Genres</Dropdown.Toggle>
+								<Dropdown.Toggle variant="dark" id="dropdown-basic">Movie Genres</Dropdown.Toggle>
 								<Dropdown.Menu>
 									{data.genres.map(gen => (
 										<Dropdown.Item value="1" key={gen.id} size="sm" as={NavLink} to={`/genres/${gen.id}`}>{gen.name}</Dropdown.Item>
@@ -27,9 +30,6 @@ const Navigation = () => {
 								</Dropdown.Menu>
 							</Dropdown>
 						)}
-						<Nav.Link as={NavLink} end to="/now_playing">Cinema</Nav.Link>
-						<Nav.Link as={NavLink} end to="/top_rated">Top Rated</Nav.Link>
-						<Nav.Link as={NavLink} end to="/popular">Popular</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
 			</Container>

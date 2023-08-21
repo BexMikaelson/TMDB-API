@@ -11,6 +11,8 @@ import ActorPage from './pages/ActorPage'
 import GenrePage from './pages/GenrePage'
 
 
+
+
 function App() {
 	return (
 		<div id="App">
